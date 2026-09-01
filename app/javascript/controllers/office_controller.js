@@ -11,6 +11,8 @@ export default class extends Controller {
     context.fillStyle = '#2563eb';
     context.fillRect(this.playerX, this.playerY , 50, 50);
   }
+
+  //capturo as setinhas e faco ele se mover diminuindo os pixel de x e y
   move(event){
     console.log(event.key,this.playerX)
     if(event.key === "ArrowRight"){
