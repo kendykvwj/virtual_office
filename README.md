@@ -1,11 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este e um site de escritorio virtual, conseguindo simular a interacao de funcionarios 
+atraves de ambiente digital mesmo estando em lugares fisicos diferentes.
 
 Things you may want to cover:
 
-* Ruby version
+* Monolito feito em Ruby on Rails com JS
 
 * System dependencies
 
@@ -15,12 +15,4 @@ Things you may want to cover:
 
 * Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# virtual_office
-# virtual_office

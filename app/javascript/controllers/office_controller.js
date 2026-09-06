@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    this.playerX = 200;
+    this.playerX = 100;
     this.playerY = 300;
     this.drawPlayer();
   }
@@ -14,14 +14,18 @@ export default class extends Controller {
 
   //capturo as setinhas e faco ele se mover diminuindo os pixel de x e y
   move(event){
-    console.log(event.key,this.playerX)
-    if(event.key === "ArrowRight"){
-      this.playerX += 20
-
-    }
+    if(event.key === "ArrowRight" ){
+     const nextX = this.playerX + 20
+     const maxX = this.element.width - 50
+     if ( nextX > maxX){
+      this.playerX = maxX
+     } 
+     else {
+      this.playerX = nextX
+     }
+     }
     else if(event.key === "ArrowLeft"){
       this.playerX -= 20
-
     }
     else if(event.key === "ArrowUp"){
       this.playerY -= 20
