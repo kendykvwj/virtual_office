@@ -25,7 +25,13 @@ export default class extends Controller {
      }
      }
     else if(event.key === "ArrowLeft"){
-      this.playerX -= 20
+      const nextXLeft = this.playerX - 20
+      if (nextXLeft > 0) {
+        this.playerX = nextXLeft
+      }
+      else {
+        this.playerX = 0
+      }
     }
     else if(event.key === "ArrowUp"){
       this.playerY -= 20
@@ -36,6 +42,6 @@ export default class extends Controller {
     const context = this.element.getContext("2d")
     context.clearRect(0,0,this.element.width,this.element.height)
     this.drawPlayer()
-
+    
   }
 }
