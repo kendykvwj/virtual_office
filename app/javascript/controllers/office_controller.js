@@ -4,19 +4,22 @@ export default class extends Controller {
   connect() {
     this.playerX = 100;
     this.playerY = 300;
+    this.playerWidth = 50;
+    this.playerHeight = 50;
+    this.moveStep = 20;
     this.drawPlayer();
   }
   drawPlayer() {
     const context = this.element.getContext('2d');
     context.fillStyle = '#2563eb';
-    context.fillRect(this.playerX, this.playerY , 50, 50);
+    context.fillRect(this.playerX, this.playerY , this.playerWidth, this.playerHeight);
   }
 
   //capturo as setinhas e faco ele se mover diminuindo os pixel de x e y
   move(event){
     if(event.key === "ArrowRight" ){
-     const nextX = this.playerX + 20
-     const maxX = this.element.width - 50
+     const nextX = this.playerX + this.moveStep
+     const maxX = this.element.width - this.playerWidth
      if ( nextX > maxX){
       this.playerX = maxX
      } 
@@ -25,7 +28,7 @@ export default class extends Controller {
      }
      }
     else if(event.key === "ArrowLeft"){
-      const nextXLeft = this.playerX - 20
+      const nextXLeft = this.playerX - this.moveStep
       if (nextXLeft > 0) {
         this.playerX = nextXLeft
       }
@@ -34,7 +37,7 @@ export default class extends Controller {
       }
     }
     else if(event.key === "ArrowUp"){
-      const nextUp = this.playerY - 20
+      const nextUp = this.playerY - this.moveStep
       if (nextUp > 0){
         this.playerY = nextUp
       }
@@ -43,8 +46,8 @@ export default class extends Controller {
       }
     }
     else if(event.key === "ArrowDown"){
-      const nextDown = this.playerY + 20
-      const MaxY = this.element.height - 50
+      const nextDown = this.playerY + this.moveStep
+      const MaxY = this.element.height - this.playerHeight
       if (nextDown > MaxY){
         this.playerY = MaxY
       }
