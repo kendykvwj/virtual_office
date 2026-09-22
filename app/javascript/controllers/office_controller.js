@@ -34,10 +34,23 @@ export default class extends Controller {
       }
     }
     else if(event.key === "ArrowUp"){
-      this.playerY -= 20
+      const nextUp = this.playerY - 20
+      if (nextUp > 0){
+        this.playerY = nextUp
+      }
+      else {
+          this.playerY = 0
+      }
     }
     else if(event.key === "ArrowDown"){
-      this.playerY += 20
+      const nextDown = this.playerY + 20
+      const MaxY = this.element.height - 50
+      if (nextDown > MaxY){
+        this.playerY = MaxY
+      }
+      else {
+        this.playerY = nextDown
+      }
     }
     const context = this.element.getContext("2d")
     context.clearRect(0,0,this.element.width,this.element.height)
