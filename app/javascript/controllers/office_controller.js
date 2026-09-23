@@ -9,6 +9,7 @@ export default class extends Controller {
     this.moveStep = 20;
     this.rightPressed = false;
     this.drawPlayer();
+    this.animationFrameId = requestAnimationFrame(() => this.update())  
   }
   drawPlayer() {
     const context = this.element.getContext('2d');
@@ -70,5 +71,11 @@ export default class extends Controller {
       this.rightPressed = false
       console.log(this.rightPressed)
     }
+  }
+  update(){
+    this.animationFrameId = requestAnimationFrame(() => this.update())
+  }
+  disconnect(){
+    cancelAnimationFrame(this.animationFrameId)
   }
 }
