@@ -7,7 +7,9 @@ export default class extends Controller {
     this.playerWidth = 50;
     this.playerHeight = 50;
     this.moveStep = 20;
+    this.rightPressed = false;
     this.drawPlayer();
+    this.animationFrameId = requestAnimationFrame(() => this.update())  
   }
   drawPlayer() {
     const context = this.element.getContext('2d');
@@ -20,6 +22,8 @@ export default class extends Controller {
     if(event.key === "ArrowRight" ){
      const nextX = this.playerX + this.moveStep
      const maxX = this.element.width - this.playerWidth
+     this.rightPressed =  true
+     console.log(this.rightPressed)
      if ( nextX > maxX){
       this.playerX = maxX
      } 
@@ -59,5 +63,19 @@ export default class extends Controller {
     context.clearRect(0,0,this.element.width,this.element.height)
     this.drawPlayer()
     
+  }
+
+  release(event){
+    console.log("soltou", event.key)
+    if(event.key === "ArrowRight"){
+      this.rightPressed = false
+      console.log(this.rightPressed)
+    }
+  }
+  update(){
+    this.animationFrameId = requestAnimationFrame(() => this.update())
+  }
+  disconnect(){
+    cancelAnimationFrame(this.animationFrameId)
   }
 }
